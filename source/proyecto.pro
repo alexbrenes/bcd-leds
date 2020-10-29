@@ -1,0 +1,10 @@
+-zero("YYYYYYN"):-!.
+-one("NYYNNNN"):-!.
+-two("YYNYYNY"):-!.
+-three("YYYYNNY"):-!.
+-four("NYYNNYY"):-!.
+-five("YNYYNYY"):-!.
+-six("YNYYYYY"):-!.
+-seven("YYYNNNN"):-!.
+-eigth("YYYYYYY"):-!.
+-nine("YYYYNYY"):-!.
