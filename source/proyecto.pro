@@ -1,13 +1,17 @@
-numero("YYYYYYN", 0).
-numero("NYYNNNN", 1).
-numero("YYNYYNY", 2).
-numero("YYYYNNY", 3).
-numero("NYYNNYY", 4).
-numero("YNYYNYY", 5).
-numero("YNYYYYY", 6).
-numero("YYYNNNN", 7).
-numero("YYYYYYY", 8).
-numero("YYYYNYY", 9).
+combY(X, X):- length(X, 0), !.
+combY([89|T], [78|CT]):- combY(T, CT).
+combY([E|T], [E|CT]):- combY(T, CT).
+
+numero(X, 0):- combY("YYYYYYN", X).
+numero(X, 1):- combY("YYNYYNY", X).
+numero(X, 2):- combY("YYYYNNY", X).
+numero(X, 3):- combY("YYYYNNY", X).
+numero(X, 4):- combY("NYYNNYY", X).
+numero(X, 5):- combY("YNYYNYY", X).
+numero(X, 6):- combY("YNYYYYY", X).
+numero(X, 7):- combY("YYYNNNN", X).
+numero(X, 8):- combY("YYYYYYY", X).
+numero(X, 9):- combY("YYYYNYY", X).
 
 subl(
 [X0,X1,X2,X3,X4,X5,X6,
@@ -20,13 +24,9 @@ subl(X,Y,Z,X,Y,Z):-!.
 printL([A|[]]):- write(A).
 printL([A|T]):- write(A), write(", "), printL(T).
 
-
 isValid(MA, 0, 0, MB, 5, 9):- MB is MA - 1, !.
 isValid(MA, DA, 0, MA, DB, 9):- DB is DA - 1, !.
 isValid(MA, DA, UA, MA, DA, UB):- UB is UA - 1, !.
-
-
-prueba(AB, BA):- AB is BA - 1.
 
 decremento([]):-!.
 decremento([_|[]]):-!.
