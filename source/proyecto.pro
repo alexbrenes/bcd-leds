@@ -59,7 +59,7 @@ decremento([A|[B|T]], BndOut):- subl(A, MA, DA, UA), subl(B, MB, DB, UB),
 						append(QMB, QDB, QMDB), append(QMDB, QUB, QB), burnedChk(NQA, QB),
 						fun(NQA, QB, NQB),
 						isValid(MA1, DA1, UA1, MB1, DB1, UB1), !,
-						decremento([B|T]).
+						decremento([B|T], NQB).
 
 decremento([]):-!.
 decremento([_|[]]):-!.
