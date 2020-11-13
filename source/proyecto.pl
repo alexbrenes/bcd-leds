@@ -21,21 +21,11 @@ subl(
 [X0,X1,X2,X3,X4,X5,X6,
 Y0,Y1,Y2,Y3,Y4,Y5,Y6,
 Z0,Z1,Z2,Z3,Z4,Z5,Z6], X, Y, Z):- !, subl([X0,X1,X2,X3,X4,X5,X6],
-										  [Y0,Y1,Y2,Y3,Y4,Y5,Y6],
-										  [Z0,Z1,Z2,Z3,Z4,Z5,Z6],X,Y,Z).
+                                          [Y0,Y1,Y2,Y3,Y4,Y5,Y6],
+                                          [Z0,Z1,Z2,Z3,Z4,Z5,Z6],X,Y,Z).
 subl(X,Y,Z,X,Y,Z):-!.
 
-%isValid(0, DA, 0, 0, DB, 9):- DB is DA - 1, !.
-%isValid(0, DA, UA, 0, DA, UB):- UB is UA - 1, !.
-%isValid(0, DA, UA, 0, DB, UB):- DB is DA - 1, !.
-%isValid(MA, 0, 0, MB, 5, 9):- MB is MA - 1, !.
-%isValid(MA, DA, 0, MA, DB, 9):- DB is DA - 1, !.
-%isValid(MA, DA, UA, MA, DA, UB):- UB is UA - 1, !.
-
-%isValid(0, DA, UA, 0, DB, UB):- NA is DA * 10 + UA, NB is DB * 10 + UB, 1 is NA - NB.
 isValid(MA, DA, UA, MB, DB, UB):- NA is MA * 100 + DA * 10 + UA, NB is MB * 100 + DB * 10 + UB, 1 is NA - NB.
-
-% Preguntar CUT y función isValid()
 
 burnedChk([],[]):-!.
 burnedChk([78|T1],[78|T2]):- !, burnedChk(T1,T2).
@@ -50,7 +40,7 @@ decremento([A|[B|T]], BndOut):- subl(A, MA, DA, UA), subl(B, MB, DB, UB),
 						numero(MB, MB1, QMB), numero(DB, DB1, QDB), numero(UB, UB1, QUB),
 						append(QMB, QDB, QMDB), append(QMDB, QUB, QB), burnedChk(NQA, QB),
 						fun(NQA, QB, NQB),
-						isValid(MA1, DA1, UA1, MB1, DB1, UB1), %!, %% Quitar este CUT
+						isValid(MA1, DA1, UA1, MB1, DB1, UB1),
 						write(MA1), write(':'), write(DA1), write(UA1),write(' '),write(MB1), write(':'), write(DB1), write(UB1), write('\n'),
 						decremento([B|T], NQB).
 
