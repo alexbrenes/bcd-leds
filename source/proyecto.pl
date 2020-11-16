@@ -25,6 +25,7 @@ Z0,Z1,Z2,Z3,Z4,Z5,Z6], X, Y, Z):- !, subl([X0,X1,X2,X3,X4,X5,X6],
                                           [Z0,Z1,Z2,Z3,Z4,Z5,Z6],X,Y,Z).
 subl(X,Y,Z,X,Y,Z):-!.
 
+isValid(MA, 0, 0, MB, 5, 9):- !, MB is MA - 1.
 isValid(MA, DA, UA, MB, DB, UB):- NA is MA * 100 + DA * 10 + UA, NB is MB * 100 + DB * 10 + UB, 1 is NA - NB.
 
 burnedChk([],[]):-!.
@@ -41,8 +42,7 @@ decremento([A|[B|T]], BndOut):- subl(A, MA, DA, UA), subl(B, MB, DB, UB),
 						append(QMB, QDB, QMDB), append(QMDB, QUB, QB), burnedChk(NQA, QB),
 						fun(NQA, QB, NQB),
 						isValid(MA1, DA1, UA1, MB1, DB1, UB1),
-						write(MA1), write(':'), write(DA1), write(UA1),write(' '),write(MB1), write(':'), write(DB1), write(UB1), write('\n'),
-						decremento([B|T], NQB).
+						decremento([B|T], NQB), !.
 
 decremento([]):-!.
 decremento([_|[]]):-!.
